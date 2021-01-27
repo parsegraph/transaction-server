@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'transaction',
     'corsheaders',
     'rest_framework',
+    'frontend'
 ]
 
 MIDDLEWARE = [
