@@ -1,15 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+import "./Accounts.css";
+import api from "../../../requests";
 
 const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/accounts")
+    api
+      .getAllAccounts()
       .then((res) => {
-        console.log(res);
         setAccounts(res.data);
       })
       .catch((err) => {
@@ -19,11 +18,22 @@ const Accounts = () => {
 
   return (
     <div>
-      <ul>
-        {accounts.map((account) => (
-          <li key={account.id}>{account.name}</li>
-        ))}
-      </ul>
+      <table className="accts_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {accounts.map((account) => (
+            <tr key={account.id}>
+              <td>{account.id}</td>
+              <td>{account.name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

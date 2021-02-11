@@ -13,7 +13,7 @@ export class Navbar extends Component {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          budgetApp<i className="fas fa-dollar-sign"></i>
+          <i className="fas fa-cash-register"></i>
         </h1>
         <div className="menu-icon" onClick={this.handleClick}>
           <i
@@ -30,7 +30,9 @@ export class Navbar extends Component {
               </li>
             );
           })}
-          <Button>Sign Up</Button>
+          <li>
+            <Button className="nav-signup">Sign Up</Button>
+          </li>
         </ul>
       </nav>
     );
