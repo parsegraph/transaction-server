@@ -1,27 +1,22 @@
-import React, { Component, Fragment, useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Navbar } from "./layout/navbar/Navbar";
+import Login from ".//layout/pages/Login";
 import Accounts from "./layout/pages/Accounts";
 import "./layout/styles/App.css";
 
-import { createBrowserHistory } from "history";
-
-// const history = createBrowserHistory();
-
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-      <Accounts />
-    </div>
+      <Login />
+      <div>
+        <Route exact path="/account" component={Accounts} />
+      </div>
+    </Router>
   );
 }
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById("app")
-);
+ReactDOM.render(<App />, document.getElementById("app"));

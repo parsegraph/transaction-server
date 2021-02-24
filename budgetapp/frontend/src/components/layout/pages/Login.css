@@ -1,0 +1,16 @@
+.form-main {
+  margin-top: 50px;
+  margin-left: 35%;
+  background-color: #32af98;
+  width: fit-content;
+  color: white;
+  border: 10px solid #3acbf7;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.btn {
+  color: white;
+  background-color: rgb(92, 43, 226);
+}

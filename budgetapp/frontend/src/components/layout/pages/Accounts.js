@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./Accounts.css";
-import api from "../../../requests";
+import api from "../../../requests.js";
 
-const Accounts = () => {
+function Accounts() {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
@@ -36,6 +36,6 @@ const Accounts = () => {
       </table>
     </div>
   );
-};
+}
 
 export default Accounts;
