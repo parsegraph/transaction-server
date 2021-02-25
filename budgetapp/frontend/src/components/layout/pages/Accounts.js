@@ -17,8 +17,8 @@ function Accounts() {
   }, []);
 
   return (
-    <div>
-      <table className="accts_table">
+    <div className="accts">
+      <table className="accts table table-striped table-hover table-primary">
         <thead>
           <tr>
             <th>ID</th>
