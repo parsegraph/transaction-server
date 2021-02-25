@@ -14,3 +14,26 @@
   color: white;
   background-color: rgb(92, 43, 226);
 }
+
+.form {
+  background: yellow;
+  text-align: left;
+}
+
+.form > div {
+  background: blue;
+}
+
+.form > div > button {
+  background:red;
+}
+
+.form > div > label {
+  background:orange;
+  width: 5em;
+  display: inline-block;
+}
+
+.form > div > input {
+  background:pink;
+}
