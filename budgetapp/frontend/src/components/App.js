@@ -12,13 +12,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div>
+      <main>
         <Switch>
           <Route exact strict path="/" component={Login} />
           <Route exact path="/account" component={Accounts} />
           <Route exact path="/transaction" component={Transactions} />
         </Switch>
-      </div>
+      </main>
     </Router>
   );
 }
