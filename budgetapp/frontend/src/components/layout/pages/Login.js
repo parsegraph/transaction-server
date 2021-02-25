@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Login.css";
-// import Button from "../navbar/Button";
 
 function Login() {
   return (
