@@ -5,7 +5,25 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+#app {
+  min-height: 100vh;
+  display: grid;
+  grid-template: "navbar" "main";
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
 main {
+  grid-area: main;
   background-color: rgb(48, 113, 233);
   padding: 0.5em;
   min-height: 100%;

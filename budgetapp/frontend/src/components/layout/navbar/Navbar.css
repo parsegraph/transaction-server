@@ -1,10 +1,11 @@
 .NavbarItems {
   background: rgb(50, 175, 152);
-  height: 80px;
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
+  grid-area: navbar;
 }
 
 .navbar-logo {
