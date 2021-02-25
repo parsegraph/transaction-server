@@ -28,6 +28,7 @@
   justify-content: end;
   margin-right: 2rem;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .navbar-links {
@@ -36,7 +37,7 @@
   padding: 0.5rem 1rem;
 }
 
-.nav-signup {
+#nav-signup {
   margin: 3rem;
 }
 
@@ -52,6 +53,10 @@
 
 .menu-icon {
   display: none;
+}
+
+.navbar-logo {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 960px) {
@@ -91,17 +96,14 @@
   }
 
   .navbar-logo {
-    transform: translate(100%, 60%);
     position: absolute;
-    top: 0;
-    left: 0;
+    left: 1em;
   }
+
   .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
+    right: 1em;
     font-size: 1.8rem;
     cursor: pointer;
   }

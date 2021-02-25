@@ -1,39 +1,44 @@
 .form-main {
+  margin: auto;
   margin-top: 50px;
-  margin-left: 35%;
   background-color: #32af98;
-  width: fit-content;
   color: white;
   border: 10px solid #3acbf7;
   text-align: center;
   border-radius: 5px;
   padding: 10px;
+  width: fit-content;
 }
 
-.btn {
+#nav-signup {
   color: white;
   background-color: rgb(92, 43, 226);
 }
 
 .form {
-  background: yellow;
   text-align: left;
 }
 
 .form > div {
-  background: blue;
+  margin-bottom: .5em;
 }
 
-.form > div > button {
-  background:red;
+.form-buttons {
+  text-align: center;
+  margin-top: .5em;
+  margin-bottom: 0;
 }
 
 .form > div > label {
-  background:orange;
-  width: 5em;
+  width: 35%;
   display: inline-block;
+  box-sizing: border-box;
+  text-align: right;
+  padding-right: .5em;
 }
 
 .form > div > input {
-  background:pink;
+  display: inline-block;
+  width: 65%;
+  box-sizing: border-box;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "./Button.css";
 
 const STYLES = ["btn--primary", "btn--outline"];
 
@@ -21,7 +20,8 @@ export const Button = ({
 
   return (
     <button
-      className={`btn ${checkButtonStyle} ${checkButtonSize} ${className}`}
+      id={`${className}`}
+      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
       type={type}
     >
