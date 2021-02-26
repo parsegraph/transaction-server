@@ -20,10 +20,17 @@ const removeAccount = (id) => {
   return http.delete(`/account/${id}`);
 };
 
+// Login Requests
+
+const getUser = (id) => {
+  return http.get("/auth/user/")
+}
+
 export default {
   getAllAccounts,
   getAccount,
   createAccount,
   updateAccount,
   removeAccount,
+  getUser,
 };
