@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
-import api from "../../../requests.js";
+// import api from "../../../requests.js";
 
 function Login() {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    api
-      .getUser()
-      .then((res) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .getUser()
+  //     .then((res) => {
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <div className="form-main">

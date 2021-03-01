@@ -7,6 +7,7 @@ import Login from ".//layout/pages/Login";
 import Accounts from "./layout/pages/Accounts";
 import Transactions from "./layout/pages/Transactions";
 import "./layout/styles/App.css";
+import SignUp from "./layout/pages/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <main>
         <Switch>
+          <Route exact strict path="/auth/user" component={SignUp} />
           <Route exact strict path="/" component={Login} />
           <Route exact path="/account" component={Accounts} />
           <Route exact path="/transaction" component={Transactions} />
