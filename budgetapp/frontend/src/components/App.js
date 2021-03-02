@@ -8,21 +8,20 @@ import Accounts from "./layout/pages/Accounts";
 import Transactions from "./layout/pages/Transactions";
 import "./layout/styles/App.css";
 import SignUp from "./layout/pages/SignUp";
-import api from '../requests';
 
-function useForceUpdate(){
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue(value => value + 1); // update the state to force render
+function useLogin(){
+  const [login, setLogin] = useState({user:null, token:null});
+  return [login, (login) => setLogin(state => {
+    if (!login) {
+      return {user:null, token:null};
+    } else {
+      return {...login};
+    }
+  })];
 }
 
 function App() {
-  const [login, dispatch] = useReducer(api.loginReducer, {});
-  const forceUpdate = useForceUpdate();
-
-  const onSignup = (action)=>{
-    dispatch(action);
-    forceUpdate();
-  }
+  const [login, setLogin] = useLogin();
 
   if (login.user) {
     return (
@@ -44,7 +43,7 @@ function App() {
       <main>
         <Switch>
           <Route exact strict path="/">
-            <SignUp dispatch={onSignup}/>
+            <SignUp dispatch={setLogin}/>
           </Route>
           <Route exact strict path="/auth/user" component={Login} />
         </Switch>
