@@ -40,33 +40,33 @@ const getUsername = ()=>{
 }
 
 const getAllAccounts = () => {
-  return http.get(`/account/`);
+  return http.get(`/api/account/`);
 };
 
 const getAccount = (id) => {
-  return http.get(`/account/${id}`);
+  return http.get(`/api/account/${id}`);
 };
 
 const createAccount = (data) => {
-  return http.post("/account/", data);
+  return http.post("/api/account/", data);
 };
 
 const updateAccount = (id, data) => {
-  return http.put(`/account/${id}`, data);
+  return http.put(`/api/account/${id}`, data);
 };
 
 const removeAccount = (id) => {
-  return http.delete(`/account/${id}`);
+  return http.delete(`/api/account/${id}`);
 };
 
 // Login Requests
 
 const getUser = (id) => {
-  return http.get("/auth/user")
+  return http.get("/api/auth/user")
 }
 
 const createUser = (username, email, password) => {
-  return http.post("/auth/register", {username, email, password});
+  return http.post("/api/auth/register", {username, email, password});
 }
 
 export default {
