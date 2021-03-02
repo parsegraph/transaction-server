@@ -8,9 +8,11 @@ import Accounts from "./layout/pages/Accounts";
 import Transactions from "./layout/pages/Transactions";
 import "./layout/styles/App.css";
 import SignUp from "./layout/pages/SignUp";
+import api from '../requests';
 
 function useLogin(){
-  const [login, setLogin] = useState({user:null, token:null});
+  const emptyLogin = {user:null, token:null};
+  const [login, setLogin] = useState(api.loadLogin() || emptyLogin);
   return [login, (login) => setLogin(state => {
     if (!login) {
       return {user:null, token:null};
