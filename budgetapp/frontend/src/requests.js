@@ -69,21 +69,6 @@ const createUser = (username, email, password) => {
   return http.post("/auth/register", {username, email, password});
 }
 
-const loginReducer = (state, action) => {
-  console.log("Login reducer", state, action);
-  switch(action.type) {
-    case 'login':
-      state.user = action.user;
-      break;
-    case 'logout':
-      state.user = null;
-      break;
-    default:
-      throw new Error();
-  }
-  return state;
-}
-
 export default {
   getAllAccounts,
   getAccount,
@@ -97,5 +82,4 @@ export default {
   getLoginToken,
   getUsername,
   isLoggedIn,
-  loginReducer
 };
