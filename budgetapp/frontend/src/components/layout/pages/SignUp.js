@@ -24,9 +24,8 @@ const useSignUpForm = (callback) => {
 }
 export {useSignUpForm};
 
-function SignUp() {
+function SignUp(props) {
   const history = useHistory();
-  const [login, dispatch] = useReducer(api.loginReducer, {});
   const {handleSubmit, handleInputChange, inputs} = useSignUpForm(()=>{
     $('#form-error').text("");
     "email password1 password2".split(" ").forEach((name)=>{
@@ -40,8 +39,8 @@ function SignUp() {
       console.log(resp);
       console.log(resp.data);
       api.saveLogin(resp.data);
-      dispatch({user:resp.data}, "login");
-      alert("HEY");
+      props.dispatch({type:"login", user:resp.data});
+      history.replace('/');
     }).catch((err)=>{
       console.log(err);
       if (typeof(err) === "object" && err.response && typeof(err.response.data) === "object") {

@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import React, {useReducer, useState} from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -10,8 +10,19 @@ import "./layout/styles/App.css";
 import SignUp from "./layout/pages/SignUp";
 import api from '../requests';
 
+function useForceUpdate(){
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update the state to force render
+}
+
 function App() {
-  const [login] = useReducer(api.loginReducer, {});
+  const [login, dispatch] = useReducer(api.loginReducer, {});
+  const forceUpdate = useForceUpdate();
+
+  const onSignup = (action)=>{
+    dispatch(action);
+    forceUpdate();
+  }
 
   if (login.user) {
     return (
@@ -32,7 +43,9 @@ function App() {
       <Navbar />
       <main>
         <Switch>
-          <Route exact strict path="/" component={SignUp} />
+          <Route exact strict path="/">
+            <SignUp dispatch={onSignup}/>
+          </Route>
           <Route exact strict path="/auth/user" component={Login} />
         </Switch>
       </main>

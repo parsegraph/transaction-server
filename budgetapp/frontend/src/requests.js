@@ -70,16 +70,18 @@ const createUser = (username, email, password) => {
 }
 
 const loginReducer = (state, action) => {
-  switch(action) {
+  console.log("Login reducer", state, action);
+  switch(action.type) {
     case 'login':
-      return state;
+      state.user = action.user;
       break;
     case 'logout':
-      return null;
+      state.user = null;
       break;
     default:
       throw new Error();
   }
+  return state;
 }
 
 export default {
