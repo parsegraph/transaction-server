@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 // import api from "../../../requests.js";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
   // const [users, setUsers] = useState([]);
 
   // useEffect(() => {
@@ -16,10 +18,17 @@ function Login() {
   //     });
   // }, []);
 
+  const onSubmit = (event)=>{
+    if (event) {
+      event.preventDefault();
+    }
+    history.replace('/auth/user');
+  };
+
   return (
     <div className="form-main">
       <h2>Login</h2>
-      <form className="form">
+      <form onSubmit={onSubmit} className="form">
         <div className="form-group">
           <label>Name: </label>
           <input className="form-control" type="text" />

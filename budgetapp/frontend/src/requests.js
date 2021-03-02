@@ -1,7 +1,46 @@
 import http from "./http-common";
 
+const saveLogin = (login)=>{
+  localStorage.setItem('login', JSON.stringify(login));
+}
+
+const loadLogin = ()=>{
+  try {
+    const login = localStorage.getItem('login');
+    if (login) {
+      return JSON.parse(login);
+    }
+  }
+  catch(ex) {
+    console.log("Error occurred while loading login");
+    console.log(ex);
+    try {
+      localStorage.removeItem("login");
+    }
+    catch (ex) {
+      console.log("Error occurred while trying to clear invalid login");
+      console.log(ex);
+    }
+  }
+  return null;
+}
+
+const getLoginToken = ()=>{
+  const login = loadLogin();
+  return login ? login.token : "";
+}
+
+const isLoggedIn = ()=>{
+  return !!loadLogin();
+}
+
+const getUsername = ()=>{
+  const login = loadLogin();
+  return login ? login.username : "";
+}
+
 const getAllAccounts = () => {
-  return http.get("/account/");
+  return http.get(`/account/`);
 };
 
 const getAccount = (id) => {
@@ -23,7 +62,24 @@ const removeAccount = (id) => {
 // Login Requests
 
 const getUser = (id) => {
-  return http.get("/auth/user/")
+  return http.get("/auth/user")
+}
+
+const createUser = (username, email, password) => {
+  return http.post("/auth/register", {username, email, password});
+}
+
+const loginReducer = (state, action) => {
+  switch(action) {
+    case 'login':
+      return state;
+      break;
+    case 'logout':
+      return null;
+      break;
+    default:
+      throw new Error();
+  }
 }
 
 export default {
@@ -33,4 +89,11 @@ export default {
   updateAccount,
   removeAccount,
   getUser,
+  createUser,
+  saveLogin,
+  loadLogin,
+  getLoginToken,
+  getUsername,
+  isLoggedIn,
+  loginReducer
 };
