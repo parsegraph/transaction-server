@@ -4,6 +4,7 @@ import "../styles/Login.css";
 import api from "../../../requests.js";
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
+import { SAVE_LOGIN } from '../../../redux/actions/types'
 
 const useSignUpForm = (callback) => {
   const [inputs, setInputs] = useState({});
@@ -41,7 +42,7 @@ function SignUp(props) {
       console.log(resp);
       console.log(resp.data);
       api.saveLogin(resp.data);
-      dispatch({type:"login", user:resp.data});
+      dispatch({type:SAVE_LOGIN, payload:resp.data});
       history.replace('/');
     }).catch((err)=>{
       console.log(err);
