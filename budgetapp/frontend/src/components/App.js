@@ -35,7 +35,7 @@ function App() {
     store.dispatch(loadLogin());
   }, []);
 
-  return (
+/*  return (
     <Provider store={store}>
       <Router>
         <Navbar />
@@ -49,22 +49,23 @@ function App() {
     </Provider>
   );
   // }
+  */
 
-  // return (
-  //   <Provider store={store}>
-  //     <Router>
-  //       <Navbar />
-  //       <main>
-  //         <Switch>
-  //           <Route exact strict path="/">
-  //             <SignUp dispatch={setLogin}/>
-  //           </Route>
-  //           <Route exact strict path="/auth/user" component={Login} />
-  //         </Switch>
-  //       </main>
-  //     </Router>
-  //   </Provider>
-  // );
+  return (
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <main>
+          <Switch>
+            <Route exact strict path="/">
+              <SignUp/>
+            </Route>
+            <Route exact strict path="/auth/user" component={Login} />
+          </Switch>
+        </main>
+      </Router>
+    </Provider>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
