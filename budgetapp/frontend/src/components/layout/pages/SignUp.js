@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import "../styles/Login.css";
 import api from "../../../requests.js";
 import $ from "jquery";
@@ -26,6 +27,7 @@ export {useSignUpForm};
 
 function SignUp(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
   const {handleSubmit, handleInputChange, inputs} = useSignUpForm(()=>{
     $('#form-error').text("");
     "email password1 password2".split(" ").forEach((name)=>{
@@ -39,7 +41,7 @@ function SignUp(props) {
       console.log(resp);
       console.log(resp.data);
       api.saveLogin(resp.data);
-      props.dispatch({type:"login", user:resp.data});
+      dispatch({type:"login", user:resp.data});
       history.replace('/');
     }).catch((err)=>{
       console.log(err);
