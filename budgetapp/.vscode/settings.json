@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/tracythorn/.local/share/virtualenvs/budgetapp-oq4htvns/bin/python"
+    "python.pythonPath": "/home/tracythorn/.local/share/virtualenvs/budgetapp-oq4htvns/bin/python",
+    "editor.formatOnSave": true
 }
