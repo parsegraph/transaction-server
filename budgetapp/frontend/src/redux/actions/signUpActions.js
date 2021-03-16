@@ -11,7 +11,6 @@ import {
 } from "./types";
 
 export const loadLogin = (dispatch, getState) => {
-    dispatch({ type: LOAD_LOGIN });
     
     const token = getState().auth.token;
 
@@ -25,6 +24,7 @@ export const loadLogin = (dispatch, getState) => {
         config.headers["token"] = token;
     }
 
+    const body = JSON.stringify({ user, token });
     axios
         .get("api/auth/user", config)
         .then(res => 
@@ -32,11 +32,7 @@ export const loadLogin = (dispatch, getState) => {
                 type: LOAD_LOGIN,
                 payload: res.data
             })
-            )
+        )
         .catch(err => console.log(err));
-
-
-    const body = JSON.stringify({ name, email, password });
-
-
+        
 }

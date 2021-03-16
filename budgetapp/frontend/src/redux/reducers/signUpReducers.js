@@ -18,6 +18,10 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case SAVE_LOGIN:
         case LOAD_LOGIN:
+            return {
+                ...state,
+                user: action.payload
+            }
         case GET_LOGIN_TOKEN:
         case IS_LOGGED_IN:
         case GET_USERNAME:
