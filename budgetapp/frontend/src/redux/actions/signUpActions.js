@@ -10,9 +10,9 @@ import {
     USE_SIGNUP_FORM
 } from "./types";
 
-export const loadLogin = (dispatch, getState) => {
+export const loadLogin = (user) => (dispatch, getState) => {
     
-    const token = getState().auth.token;
+    const token = getState().signup.token;
 
     const config = {
         headers: {
