@@ -1,4 +1,6 @@
 import axios from "axios";
+
+import { getErrors } from "./errorActions";
 import { 
     SAVE_LOGIN,
     LOAD_LOGIN,
@@ -33,6 +35,8 @@ export const loadLogin = (user) => (dispatch, getState) => {
                 payload: res.data
             })
         )
-        .catch(err => console.log(err));
+        .catch(err => {
+            dispatch(getErrors(err.response.data, err.response.status));
+        });
         
 }

@@ -6,3 +6,5 @@ export const GET_USERNAME = "GET_USERNAME";
 export const GET_USER = "GET_USER";
 export const CREATE_USER = "CREATE_USER";
 export const USE_SIGNUP_FORM = "USE_SIGNUP_FORM";
+export const GET_ERRORS = "GET_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

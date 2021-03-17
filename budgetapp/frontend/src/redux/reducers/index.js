@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import signUpReducers from "./signUpReducers";
+import errorReducers from "./errorReducers";
 
 export default combineReducers({
-    signup: signUpReducers
+    signup: signUpReducers,
+    error: errorReducers
 });
