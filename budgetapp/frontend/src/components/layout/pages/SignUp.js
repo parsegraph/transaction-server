@@ -39,9 +39,9 @@ function SignUp(props) {
       return;
     }
     api.createUser(inputs.email, inputs.email, inputs.password1).then((resp)=>{
-      console.log(resp);
-      console.log(resp.data);
-      api.saveLogin(resp.data);
+      //console.log(resp);
+      //console.log(resp.data);
+      //api.saveLogin(resp.data);
       dispatch({type:SAVE_LOGIN, payload:resp.data});
       history.replace('/');
     }).catch((err)=>{

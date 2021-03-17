@@ -22,7 +22,7 @@ const loadLogin = ()=>{
       console.log(ex);
     }
   }
-  return null;
+  return {user:null, token:null};
 }
 
 const getLoginToken = ()=>{
