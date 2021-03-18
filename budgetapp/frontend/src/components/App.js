@@ -1,7 +1,7 @@
 import React, {useEffect, useReducer, useState} from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, connect } from "react-redux";
 
 import { Navbar } from "./layout/navbar/Navbar";
 import Login from ".//layout/pages/Login";
@@ -26,33 +26,24 @@ import { loadLogin } from "../redux/actions/signUpActions";
 //   })];
 // }
 
-function App() {
-  // const [login, setLogin] = useLogin();
+function App({signup}) {
+  console.log(signup);
 
-  // if (login.user) {
-
-  useEffect(() => {
-    store.dispatch(loadLogin());
-  }, []);
-
-/*  return (
-    <Provider store={store}>
-      <Router>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route exact strict path="/" component={Accounts} />
-            <Route exact path="/transaction" component={Transactions} />
-          </Switch>
-        </main>
-      </Router>
-    </Provider>
-  );
-  // }
-  */
+  if (signup.user) {
+    return (
+        <Router>
+          <Navbar />
+          <main>
+            <Switch>
+              <Route exact strict path="/" component={Accounts} />
+              <Route exact path="/transaction" component={Transactions} />
+            </Switch>
+          </main>
+        </Router>
+    );
+  }
 
   return (
-    <Provider store={store}>
       <Router>
         <Navbar />
         <main>
@@ -64,8 +55,13 @@ function App() {
           </Switch>
         </main>
       </Router>
-    </Provider>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const mapStateToProps = (state) => ({
+  signup: state.signup
+});
+
+App = connect(mapStateToProps, null)(App);
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("app"));
