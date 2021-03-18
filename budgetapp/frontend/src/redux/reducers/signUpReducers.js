@@ -16,11 +16,16 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case SAVE_LOGIN:
         case LOAD_LOGIN:
             return {
                 ...state,
                 user: action.payload
+            }
+        case SAVE_LOGIN:
+            localStorage.setItem("token", action.payload.token);
+            return {
+                ...state,
+                ...action.payload
             }
         case GET_LOGIN_TOKEN:
         case IS_LOGGED_IN:

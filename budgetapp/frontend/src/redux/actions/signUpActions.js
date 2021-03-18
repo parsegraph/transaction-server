@@ -12,8 +12,46 @@ import {
     USE_SIGNUP_FORM
 } from "./types";
 
-export const loadLogin = (user) => (dispatch, getState) => {
+export const loadLogin = () => (dispatch, getState) => {
+    axios
+        .get("api/auth/user", tokenConfig(getState))
+        .then(res => 
+            dispatch({
+                type: LOAD_LOGIN,
+                payload: res.data
+            })
+        )
+        .catch(err => {
+            dispatch(getErrors(err.response.data, err.response.status));
+        });
+        
+}
+
+export const saveLogin = ({ username, email, password }) => dispatch => {
     
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const body = JSON.stringify({ username, email, password });
+
+    axios
+        .post("api/auth/register", body, config)
+        .then(res => 
+            dispatch({
+                type:SAVE_LOGIN,
+                payload: res.data
+            })
+        )
+        .catch(err => {
+            dispatch(getErrors(err.response.data, err.response.status));
+        });
+}
+
+export const tokenConfig = getState => {
+
     const token = getState().signup.token;
 
     const config = {
@@ -26,17 +64,5 @@ export const loadLogin = (user) => (dispatch, getState) => {
         config.headers["token"] = token;
     }
 
-    const body = JSON.stringify({ user, token });
-    axios
-        .get("api/auth/user", config)
-        .then(res => 
-            dispatch({
-                type: LOAD_LOGIN,
-                payload: res.data
-            })
-        )
-        .catch(err => {
-            dispatch(getErrors(err.response.data, err.response.status));
-        });
-        
+    return config;
 }
