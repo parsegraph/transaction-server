@@ -10,7 +10,8 @@ import {
     GET_USERNAME,
     GET_USER,
     CREATE_USER,
-    USE_SIGNUP_FORM
+    USE_SIGNUP_FORM,
+    HAS_USER_SESSION
 } from "./types";
 
 export const loadLogin = () => (dispatch, getState) => {
@@ -72,5 +73,11 @@ export const tokenConfig = getState => {
 export const logout = () => {
     return {
         type: CLEAR
+    };
+};
+
+export const hasUserSession = () => {
+    return {
+        type: HAS_USER_SESSION 
     };
 };

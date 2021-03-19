@@ -10,3 +10,4 @@ export const USE_SIGNUP_FORM = "USE_SIGNUP_FORM";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const GET_ACCOUNTS = "GET_ACCOUNTS";
+export const HAS_USER_SESSION = "HAS_USER_SESSION";
