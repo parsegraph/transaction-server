@@ -1,5 +1,6 @@
 export const SAVE_LOGIN = "SAVE_LOGIN";
 export const LOAD_LOGIN = "LOAD_LOGIN";
+export const CLEAR = "CLEAR";
 export const GET_LOGIN_TOKEN = "GET_LOGIN_TOKEN";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const GET_USERNAME = "GET_USERNAME";

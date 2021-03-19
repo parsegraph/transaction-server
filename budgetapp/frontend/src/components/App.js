@@ -1,7 +1,7 @@
 import React, {useEffect, useReducer, useState} from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, Redirect, Switch } from "react-router-dom";
-import { Provider, useDispatch, connect } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 
 import { Navbar } from "./layout/navbar/Navbar";
 import Login from ".//layout/pages/Login";

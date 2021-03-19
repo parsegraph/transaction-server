@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import "../styles/Login.css";
 import api from "../../../requests.js";
 import $ from "jquery";
+import { saveLogin } from '../../../redux/actions/signUpActions';
 import { useHistory } from "react-router-dom";
-import { saveLogin } from '../../../redux/actions/signUpActions'
 
 // const useSignUpForm = (callback) => {
 //   const [inputs, setInputs] = useState({});
@@ -63,6 +63,8 @@ function SignUp(props) {
 
   // const onChange = handleInputChange;
 
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({
@@ -85,7 +87,9 @@ function SignUp(props) {
         return
       } 
       dispatch(saveLogin(user));
+      history.push("/");
   }
+
 
   return (
     <div className="form-main">

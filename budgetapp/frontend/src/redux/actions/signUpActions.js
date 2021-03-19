@@ -4,6 +4,7 @@ import { getErrors } from "./errorActions";
 import { 
     SAVE_LOGIN,
     LOAD_LOGIN,
+    CLEAR,
     GET_LOGIN_TOKEN,
     IS_LOGGED_IN,
     GET_USERNAME,
@@ -66,3 +67,9 @@ export const tokenConfig = getState => {
 
     return config;
 }
+
+export const logout = () => {
+    return {
+        type: CLEAR
+    };
+};
