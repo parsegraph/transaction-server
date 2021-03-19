@@ -11,7 +11,7 @@ import SignUp from "./layout/pages/SignUp";
 
 import store from "../redux/store";
 
-import {PrivateRoute} from './PrivateRoute';
+import {SharedRoute} from './SharedRoute';
 
 
 function App() {
@@ -20,10 +20,9 @@ function App() {
       <Navbar />
       <main>
         <Switch>
-          <PrivateRoute exact strict path="/accounts" component={Accounts} />
+          <SharedRoute exact strict path='/' userComponent={Accounts} component={SignUp}/>
           <Route exact strict path="/auth/user" component={Login} />
-          <Route exact strict path='/signup' component={SignUp} />
-          <Redirect from="*" to="/signup"/>
+          <Redirect from="*" to="/"/>
         </Switch>
       </main>
     </>
