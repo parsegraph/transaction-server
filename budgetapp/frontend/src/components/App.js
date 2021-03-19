@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <main>
         <Switch>
-          <PrivateRoute exact strict path="/" component={Accounts} />
+          <PrivateRoute exact strict path="/accounts" component={Accounts} />
           <Route exact strict path="/auth/user" component={Login} />
           <Route exact strict path='/signup' component={SignUp} />
           <Redirect from="*" to="/signup"/>
