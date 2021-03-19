@@ -1,19 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { useDispatch, connect } from "react-redux";
 import "./Accounts.css";
-import api from "../../../requests.js";
 
-function Accounts() {
-  const [accounts, setAccounts] = useState([]);
+import {getAllAccounts} from '../../../redux/actions/accountsActions';
 
+function Accounts({accounts}) {
+  const dispatch = useDispatch();
   useEffect(() => {
-    api
-      .getAllAccounts()
-      .then((res) => {
-        setAccounts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(getAllAccounts());
   }, []);
 
   return (
@@ -38,4 +32,8 @@ function Accounts() {
   );
 }
 
-export default Accounts;
+const mapStateToProps = (state)=>{
+  return {accounts: state.account.accounts}
+}
+
+export default connect(mapStateToProps)(Accounts);
