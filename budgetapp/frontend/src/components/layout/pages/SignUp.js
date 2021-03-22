@@ -1,69 +1,11 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import "../styles/Login.css";
-import api from "../../../requests.js";
-import $ from "jquery";
 import { saveLogin } from '../../../redux/actions/signUpActions';
-import { useHistory } from "react-router-dom";
 
-// const useSignUpForm = (callback) => {
-//   const [inputs, setInputs] = useState({});
-//   const handleSubmit = (event) => {
-//     if (event) {
-//       event.preventDefault();
-//     }
-//     callback();
-//   }
-//   const handleInputChange = (event) => {
-//     event.persist();
-//     setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-//   }
-//   return {
-//     handleSubmit,
-//     handleInputChange,
-//     inputs
-//   };
-// }
-// export {useSignUpForm};
 
-function SignUp(props) {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-  // const {handleSubmit, handleInputChange, inputs} = useSignUpForm(()=>{
-  //   $('#form-error').text("");
-  //   "email password1 password2".split(" ").forEach((name)=>{
-  //     $(`#${name}-error`).text("");
-  //   })
-  //   if (inputs.password1 !== inputs.password2) {
-  //     $("#password2-error").text("Passwords don't match!");
-  //     return;
-  //   }
-  //   api.createUser(inputs.email, inputs.email, inputs.password1).then((resp)=>{
-  //     console.log(resp);
-  //     console.log(resp.data);
-  //     api.saveLogin(resp.data);
-  //     dispatch({type:SAVE_LOGIN, payload:resp.data});
-  //     history.replace('/');
-  //   }).catch((err)=>{
-  //     console.log(err);
-  //     if (typeof(err) === "object" && err.response && typeof(err.response.data) === "object") {
-  //       for (let key in err.response.data) {
-  //         if (!Object.prototype.hasOwnProperty.call(err.response.data, key)) {
-  //           continue;
-  //         }
-  //         $(`#${key === "username" ? "email" : key}-error`).text(err.response.data[key]);
-  //       }
-  //     } else if (err) {
-  //       $('#form-error').text(err);
-  //     } else {
-  //       $('#form-error').text("Error while signing up!");
-  //     }
-  //   });
-  // });
 
-  // const onChange = handleInputChange;
-
-  const history = useHistory();
+function SignUp() {
 
   const dispatch = useDispatch();
 
@@ -87,7 +29,6 @@ function SignUp(props) {
         return
       } 
       dispatch(saveLogin(user));
-      history.push("/");
   }
 
 

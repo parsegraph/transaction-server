@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect, useDispatch} from 'react-redux';
+import {connect, useDispatch } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import {hasUserSession} from '../redux/actions/signUpActions';
 
@@ -21,7 +21,7 @@ function SharedRoute({ component: Component, userComponent: UserComponent, roles
     );
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {signup:state.signup}
 }
 
