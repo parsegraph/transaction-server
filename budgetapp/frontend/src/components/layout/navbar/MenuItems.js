@@ -16,8 +16,8 @@ export const MenuItems = [
     title: "Logout",
     url: "/api/auth/logout",
     cName: "navbar-links",
-    func: (item, index, dispatch) => {return <li key={index}>
-    <a className={item.cName} onClick={dispatch(logout)}>
+    func: (item, index, logout) => {return <li key={index}>
+    <a className={item.cName} onClick={logout}>
       {item.title}
     </a>
   </li>}

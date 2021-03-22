@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { MenuItems } from "./MenuItems";
 import { Button } from "./Button";
 import "./Navbar.css";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
+import { logout } from "../../../redux/actions/signUpActions";
 
-export class Navbar extends Component {
+class Navbar extends Component {
   
   state = { clicked: false };
   
@@ -12,7 +13,6 @@ export class Navbar extends Component {
     this.setState({ clicked: !this.state.clicked });
   };
   render() {
-    const dispatch = useDispatch();
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
@@ -26,7 +26,7 @@ export class Navbar extends Component {
         <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
             if(item.func) {
-              return item.func(item, index, dispatch);
+              return item.func(item, index, this.props.logout);
             }
             return (
                 <li key={index}>
@@ -45,4 +45,9 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(logout())
+    }
+};
+export default connect(null, mapDispatchToProps)(Navbar);

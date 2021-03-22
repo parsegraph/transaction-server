@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Redirect, Switch, useHistory } from "react-router-dom";
 import { Provider, useDispatch } from "react-redux";
 
-import { Navbar } from "./layout/navbar/Navbar";
+import Navbar from "./layout/navbar/Navbar";
 import Login from "./layout/pages/Login";
 import Accounts from "./layout/pages/Accounts";
 import "./layout/styles/App.css";
