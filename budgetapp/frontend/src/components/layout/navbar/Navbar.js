@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { MenuItems } from "./MenuItems";
 import { Button } from "./Button";
 import "./Navbar.css";
+import { useDispatch } from "react-redux";
 
 export class Navbar extends Component {
+  
   state = { clicked: false };
-
+  
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked });
   };
   render() {
+    const dispatch = useDispatch();
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
@@ -22,12 +25,15 @@ export class Navbar extends Component {
         </div>
         <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
+            if(item.func) {
+              return item.func(item, index, dispatch);
+            }
             return (
-              <li key={index}>
-                <a className={item.cName} href={item.url}>
-                  {item.title}
-                </a>
-              </li>
+                <li key={index}>
+                  <a className={item.cName} href={item.url}>
+                    {item.title}
+                  </a>
+                </li>
             );
           })}
           <li>

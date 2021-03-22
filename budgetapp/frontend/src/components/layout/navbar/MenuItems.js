@@ -1,3 +1,6 @@
+import React from "react";
+import { logout } from "../../../redux/actions/signUpActions";
+
 export const MenuItems = [
   {
     title: "Home",
@@ -11,7 +14,12 @@ export const MenuItems = [
   },
   {
     title: "Logout",
-    url: "#",
+    url: "/api/auth/logout",
     cName: "navbar-links",
+    func: (item, index, dispatch) => {return <li key={index}>
+    <a className={item.cName} onClick={dispatch(logout)}>
+      {item.title}
+    </a>
+  </li>}
   },
 ];

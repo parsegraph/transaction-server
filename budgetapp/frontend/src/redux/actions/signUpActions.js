@@ -52,6 +52,17 @@ export const saveLogin = ({ username, email, password }) => dispatch => {
         });
 }
 
+export const logout = () => (dispatch, getState) => {
+    axios
+        .post("api/auth/logout", null, tokenConfig(getState))
+        .then((res) => {
+            dispatch({ type: CLEAR });
+        })
+        .catch((err) => {
+            dispatch(getErrors(err.response.data, err.response.status))
+        });
+};
+
 export const tokenConfig = getState => {
 
     const token = getState().signup.token;
@@ -70,11 +81,6 @@ export const tokenConfig = getState => {
     return config;
 }
 
-export const logout = () => {
-    return {
-        type: CLEAR
-    };
-};
 
 export const hasUserSession = () => {
     return {
