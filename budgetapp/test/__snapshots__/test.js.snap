@@ -57,3 +57,21 @@ exports[`Navbar renders correctly 1`] = `
   </ul>
 </nav>
 `;
+
+exports[`SharedRoute renders correctly when anonymous 1`] = `
+<button
+  className="btn btn--primary btn--medium"
+  id="undefined"
+>
+  anonymous
+</button>
+`;
+
+exports[`SharedRoute renders correctly when logged in 1`] = `
+<button
+  className="btn btn--primary btn--medium"
+  id="undefined"
+>
+  user
+</button>
+`;
