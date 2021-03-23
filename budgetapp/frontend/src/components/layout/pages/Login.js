@@ -40,7 +40,7 @@ function Login() {
           <span id="password1-error" className="error"></span>
         </div>
         <div className="form-group form-buttons" style={{marginBottom:0}}>
-          <button className="btn btn-secondary">Sign-Up</button>
+          <button className="btn btn-secondary">Log in</button>
         </div>
       </form>
     </div>
