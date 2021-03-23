@@ -22,7 +22,7 @@ function App() {
       <main>
         <Switch>
           <SharedRoute exact strict path='/' userComponent={Accounts} component={SignUp}/>
-          <Route exact strict path="/auth/user/login" component={Login} />
+          <SharedRoute exact strict path="/login" userComponent={()=>(<Redirect to="/" />)} component={Login} />
           <Redirect from="*" to="/"/>
         </Switch>
       </main>
