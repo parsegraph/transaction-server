@@ -5,7 +5,8 @@
   "main": "./frontend/static/frontend/main.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "npx jest"
   },
   "keywords": [],
   "author": "",
