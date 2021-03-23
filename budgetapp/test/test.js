@@ -24,25 +24,33 @@ jest.mock('react', () => ({
 
 describe("Navbar", ()=>{
   let wrapper;
-  const createWrapper = ()=>{
-    const store = mockStore({});
+  const createWrapper = (conf)=>{
+    const store = mockStore(conf || {});
     return mount(
       <Provider store={store}>
-        <Navbar/>
+        <MemoryRouter>
+          <Navbar/>
+        </MemoryRouter>
       </Provider>
     );
   };
 
   it('renders correctly', () => {
+    wrapper = createWrapper({signup:{hasUserSession:false}});
     const tree = renderer
-      .create(createWrapper())
+      .create(wrapper)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('should show up', ()=>{
-    wrapper = createWrapper();
+  it('should show Sign Up when NOT logged in', ()=>{
+    wrapper = createWrapper({signup:{hasUserSession:false}});
     expect(wrapper.containsMatchingElement(<Button className="nav-signup">Sign Up</Button>)).toEqual(true);
+  });
+
+  it('should NOT show Sign Up when logged in', ()=>{
+    wrapper = createWrapper({signup:{hasUserSession:true}});
+    expect(wrapper.containsMatchingElement(<Button className="nav-signup">Sign Up</Button>)).toEqual(false);
   });
 });
 

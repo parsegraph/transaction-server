@@ -26,6 +26,7 @@ exports[`Navbar renders correctly 1`] = `
       <a
         className="navbar-links"
         href="/"
+        onClick={[Function]}
       >
         Home
       </a>
@@ -33,26 +34,24 @@ exports[`Navbar renders correctly 1`] = `
     <li>
       <a
         className="navbar-links"
-        href="/account"
+        href="/login"
+        onClick={[Function]}
       >
-        Accounts
+        Log in
       </a>
     </li>
     <li>
       <a
-        className="navbar-links"
+        href="/signup"
         onClick={[Function]}
       >
-        Logout
+        <button
+          className="btn btn--primary btn--medium"
+          id="nav-signup"
+        >
+          Sign Up
+        </button>
       </a>
-    </li>
-    <li>
-      <button
-        className="btn btn--primary btn--medium"
-        id="nav-signup"
-      >
-        Sign Up
-      </button>
     </li>
   </ul>
 </nav>
