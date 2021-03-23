@@ -59,7 +59,7 @@ function SignUp() {
         </div>
         <div className="form-group form-buttons" style={{marginBottom:0}}>
           <button className="btn btn-secondary">Sign-Up</button>
-        </div>4
+        </div>
       </form>
     </div>
   );
