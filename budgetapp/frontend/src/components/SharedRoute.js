@@ -1,12 +1,8 @@
 import React from 'react';
-import {connect, useDispatch } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
-import {hasUserSession} from '../redux/actions/signUpActions';
+import {connect} from 'react-redux';
+import { Route} from 'react-router-dom';
 
 function SharedRoute({ component: Component, userComponent: UserComponent, roles, ...rest }) {
-    const dispatch = useDispatch();
-    dispatch(hasUserSession());
-
     const hasSession = rest.signup.hasUserSession;
     return (
         <Route {...rest} render={props => {
