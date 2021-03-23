@@ -36,7 +36,7 @@ class Navbar extends Component {
                 </li>
             );
           })}
-          <li>
+          <li key={MenuItems.length}>
             <Button className="nav-signup">Sign Up</Button>
           </li>
         </ul>
