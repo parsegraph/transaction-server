@@ -4,16 +4,35 @@ import { Button } from "./Button";
 import "./Navbar.css";
 import { connect } from "react-redux";
 import { logout } from "../../../redux/actions/signUpActions";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   
-  state = { clicked: false };
-  
+  state = { hasUserSession: null, clicked: false };
+
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked });
   };
+    
+  componentDidMount() {
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.setState({ clicked: false });
+    });
+  }
+
+  componentWillUnmount() {
+      this.unlisten();
+  }
+
+  componentDidUpdate() {
+    if (this.state.hasUserSession !== this.props.hasUserSession) {
+      this.setState({hasUserSession:this.props.hasUserSession, clicked: false});
+    }
+  }
+
   render() {
+    const hasUserSession = this.props.hasUserSession;
+  
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
@@ -26,23 +45,32 @@ class Navbar extends Component {
         </div>
         <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
           {MenuItems.map((item, index) => {
+            if (item.userOnly && !hasUserSession) {
+              return;
+            }
+            if (item.anonymousOnly && hasUserSession) {
+              return;
+            }
             if(item.func) {
               return item.func(item, index, this.props.logout);
             }
             return (
                 <li key={index}>
-                  <a className={item.cName} href={item.url}>
+                  <Link className={item.cName} to={item.url}>
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
             );
           })}
-          <li key={MenuItems.length}>
-            <Link to="/signup"><Button className="nav-signup">Sign Up</Button></Link>
-          </li>
         </ul>
       </nav>
     );
+  }
+}
+
+const mapStateToProps = (state)=>{
+  return {
+    hasUserSession:state.signup.hasUserSession
   }
 }
 
@@ -51,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
         logout: () => dispatch(logout())
     }
 };
-export default connect(null, mapDispatchToProps)(Navbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
