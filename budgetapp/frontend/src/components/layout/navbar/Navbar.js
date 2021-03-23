@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import "./Navbar.css";
 import { connect } from "react-redux";
 import { logout } from "../../../redux/actions/signUpActions";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   
@@ -37,7 +38,7 @@ class Navbar extends Component {
             );
           })}
           <li key={MenuItems.length}>
-            <Button className="nav-signup">Sign Up</Button>
+            <Link to="/signup"><Button className="nav-signup">Sign Up</Button></Link>
           </li>
         </ul>
       </nav>
