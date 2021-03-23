@@ -55,7 +55,7 @@ function SignUp() {
           <span id="password2-error" className="error"></span>
         </div>
         <div className="form-group form-buttons" style={{marginBottom:0}}>
-          <Link className="btn btn-secondary" to="/api/auth/login">Login</Link>
+          <Link className="btn btn-secondary" to="/login">Login</Link>
         </div>
         <div className="form-group form-buttons" style={{marginBottom:0}}>
           <button className="btn btn-secondary">Sign-Up</button>
