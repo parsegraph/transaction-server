@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import "../styles/Login.css";
 import { saveLogin } from '../../../redux/actions/signUpActions';
+
 
 
 
@@ -53,8 +55,11 @@ function SignUp() {
           <span id="password2-error" className="error"></span>
         </div>
         <div className="form-group form-buttons" style={{marginBottom:0}}>
-          <button className="btn btn-secondary">Sign-Up</button>
+          <Link className="btn btn-secondary" to="/api/auth/login">Login</Link>
         </div>
+        <div className="form-group form-buttons" style={{marginBottom:0}}>
+          <button className="btn btn-secondary">Sign-Up</button>
+        </div>4
       </form>
     </div>
   );

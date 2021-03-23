@@ -1,17 +1,18 @@
-import React, {useEffect, useReducer, useState} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Redirect, Switch, useHistory } from "react-router-dom";
-import { Provider, useDispatch } from "react-redux";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Navbar from "./layout/navbar/Navbar";
 import Login from "./layout/pages/Login";
 import Accounts from "./layout/pages/Accounts";
-import "./layout/styles/App.css";
 import SignUp from "./layout/pages/SignUp";
+import "./layout/styles/App.css";
 
 import store from "../redux/store";
 
 import {SharedRoute} from './SharedRoute';
+
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <main>
         <Switch>
           <SharedRoute exact strict path='/' userComponent={Accounts} component={SignUp}/>
-          <Route exact strict path="/auth/user" component={Login} />
+          <Route exact strict path="/auth/user/login" component={Login} />
           <Redirect from="*" to="/"/>
         </Switch>
       </main>

@@ -2,6 +2,7 @@ import {
     SAVE_LOGIN,
     LOAD_LOGIN,
     CLEAR,
+    LOGIN,
     GET_LOGIN_TOKEN,
     IS_LOGGED_IN,
     GET_USERNAME,
@@ -25,6 +26,7 @@ export default function(state = initialState, action) {
                 ...state,
                 user: action.payload
             }
+        case LOGIN:
         case SAVE_LOGIN:
             localStorage.setItem("token", action.payload.token);
             return {
