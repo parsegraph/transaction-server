@@ -74,3 +74,105 @@ exports[`SharedRoute renders correctly when logged in 1`] = `
   user
 </button>
 `;
+
+exports[`Sign-Up shows something 1`] = `
+<div
+  className="form-main"
+>
+  <h2>
+    SignUp
+  </h2>
+  <span
+    className="form-error"
+  />
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label>
+        E-mail:
+      </label>
+      <input
+        className="form-control"
+        defaultValue=""
+        name="email"
+        onChange={[Function]}
+        type="email"
+      />
+      <span
+        className="error"
+        id="email-error"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Password:
+      </label>
+      <input
+        className="form-control"
+        defaultValue=""
+        name="password1"
+        onChange={[Function]}
+        type="password"
+      />
+      <span
+        className="error"
+        id="password1-error"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Re-Enter Password:
+      </label>
+      <input
+        className="form-control"
+        defaultValue=""
+        name="password2"
+        onChange={[Function]}
+        type="password"
+      />
+      <span
+        className="error"
+        id="password2-error"
+      />
+    </div>
+    <div
+      className="form-group form-buttons"
+      style={
+        Object {
+          "marginBottom": 0,
+        }
+      }
+    >
+      <a
+        className="btn btn-secondary"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </div>
+    <div
+      className="form-group form-buttons"
+      style={
+        Object {
+          "marginBottom": 0,
+        }
+      }
+    >
+      <button
+        className="btn btn-secondary"
+      >
+        Sign-Up
+      </button>
+    </div>
+  </form>
+</div>
+`;

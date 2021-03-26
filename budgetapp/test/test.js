@@ -19,25 +19,26 @@ configure({adapter: new Adapter()});
 
 const mockStore = configureMockStore([thunk]);
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn(),
-}));
+// jest.mock('react', () => ({
+//   ...jest.requireActual('react'),
+//   useState: jest.fn(),
+// }));
 
+describe("Sign-Up2", () => {
+  const mockStore = configureMockStore();
+  const store = mockStore();
 
-// describe("Sign-Up2", () => {
-//   const mockStore = configureMockStore();
-//   const store = mockStore();
-
-//   it("does something", () => {
-//     const wrapper = mount(
-//       <Provider store={store}>
-//         <SignUp />
-//       </Provider>
-//     );
-//     expect(wrapper).toBeTruthy();
-//   });
-// });
+  it("does something", () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <MemoryRouter>
+          <SignUp />
+        </MemoryRouter>
+      </Provider>
+    );
+    expect(wrapper).toBeTruthy();
+  });
+});
 
 
 describe("Sign-Up", ()=>{
