@@ -29,7 +29,7 @@ function SignUp() {
       user.password = user.password1;
       if(user.password1 !== user.password2) {
         return
-      } 
+      };
       dispatch(saveLogin(user));
   }
 

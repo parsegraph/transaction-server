@@ -1,17 +1,19 @@
-import thunk from 'redux-thunk';
-import { mount } from 'enzyme';
-import { Provider, useDispatch as useDispatchMock } from 'react-redux';
 import React, { useState as useStateMock } from 'react';
-import configureMockStore from 'redux-mock-store';
+import { Provider, useDispatch as useDispatchMock } from 'react-redux';
+import { Route, MemoryRouter, Switch } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
+import SignUp from "../frontend/src/components/layout/pages/SignUp";
 import Navbar from '../frontend/src/components/layout/navbar/Navbar';
-import {Button} from '../frontend/src/components/layout/navbar/Button';
+import { Button } from '../frontend/src/components/layout/navbar/Button';
+import { SharedRoute } from '../frontend/src/components/SharedRoute';
 
-import { configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
 import Adapter from 'enzyme-adapter-react-17-updated';
 import renderer from 'react-test-renderer';
-import { SharedRoute } from '../frontend/src/components/SharedRoute';
-import { Route, MemoryRouter, Switch } from 'react-router-dom';
+
+import axios from "axios";
 
 configure({adapter: new Adapter()});
 
@@ -21,6 +23,46 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn(),
 }));
+
+
+// describe("Sign-Up2", () => {
+//   const mockStore = configureMockStore();
+//   const store = mockStore();
+
+//   it("does something", () => {
+//     const wrapper = mount(
+//       <Provider store={store}>
+//         <SignUp />
+//       </Provider>
+//     );
+//     expect(wrapper).toBeTruthy();
+//   });
+// });
+
+
+describe("Sign-Up", ()=>{
+  let wrapper;
+  const createWrapper = (conf)=>{
+    const store = mockStore(conf || {});
+    return mount(
+      <Provider store={store}>
+        <MemoryRouter>
+          <SignUp/>
+        </MemoryRouter>
+      </Provider>
+    );
+  };
+
+  it("shows something", () => {
+    wrapper = createWrapper();
+    const tree = renderer
+    .create(wrapper)
+    .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+
+
 
 describe("Navbar", ()=>{
   let wrapper;
